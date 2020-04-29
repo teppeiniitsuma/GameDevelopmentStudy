@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        if (save.loadPlayerData(1) != null)
-            player = save.loadPlayerData(1);
+        if(save.loadPlayerData(SaveManager.num) != null)
+            player = save.loadPlayerData(SaveManager.num);
         Debug.Log(player.pos);
     }
 

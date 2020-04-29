@@ -8,6 +8,16 @@ public class SaveManager
 {
     private string folderPath;
     private string filePath;
+    public static int num = 1;
+
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    void Initialize()
+    {
+        folderPath = Path.Combine(Application.dataPath, @"Resources\Save\SaveData");
+        filePath   = Path.Combine(Application.dataPath, @"Resources\Save\SaveData\saveData");
+    }
 
     public void Save(int n)
     {
@@ -18,17 +28,34 @@ public class SaveManager
 
     }
 
-    public void DeleteData()
+    public void Delete()
     {
-
+        Initialize();
+        if (Directory.Exists(folderPath) == true)
+        {
+            //　UnityEditor上だと子要素だけ削除
+            try
+            {
+                Directory.Delete(folderPath, recursive: true);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+            Debug.Log(folderPath + "を削除しました。");
+        }
+        else
+        {
+            Debug.Log(folderPath + "は存在しません。");
+        }
     }
     /// <summary>
     /// SaveFolderがない場合作成
     /// </summary>
     public void CreateData()
     {
+        Initialize();
         FileStream fs = null;
-        folderPath = Path.Combine(Application.dataPath, @"Save\SaveData");
 
         if(Directory.Exists(folderPath) == false)
         {
@@ -56,11 +83,11 @@ public class SaveManager
     }
     public void savePlayerData(int n, Player p)
     {
+        Initialize();
         StreamWriter writer;
 
         string json = JsonUtility.ToJson(p);
-        string dataPath = Path.Combine(Application.dataPath, @"Save\File\saveData");
-        writer = new StreamWriter(dataPath + n + ".json", false);
+        writer = new StreamWriter(filePath + n + ".json", false);
         writer.Write(json);
         writer.Flush();
         writer.Close();
@@ -68,28 +95,16 @@ public class SaveManager
 
     public Player loadPlayerData(int n)
     {
+        Initialize();
         string data = "";
         StreamReader reader;
-        string dataPath = Path.Combine(Application.dataPath, @"Save\File\saveData");
 
-        if (File.Exists(dataPath) == false)
+        if (File.Exists(filePath + n + ".json") == true)
         {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-        }
-        else
-        {
-            reader = new StreamReader(dataPath + n + ".json");
+            reader = new StreamReader(filePath + n + ".json");
             data = reader.ReadToEnd();
             reader.Close();
         }
-
         return JsonUtility.FromJson<Player>(data);
     }
 }
