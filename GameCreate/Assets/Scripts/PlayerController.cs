@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
             player.pos.x -= 1;
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            player.hp--;
+        }
     }
-    void Start()
+    void Awake()
     {
         if(save.loadPlayerData(SaveManager.num) != null)
             player = save.loadPlayerData(SaveManager.num);
