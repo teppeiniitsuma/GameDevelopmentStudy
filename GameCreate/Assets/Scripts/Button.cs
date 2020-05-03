@@ -22,8 +22,19 @@ public class Button : MonoBehaviour
 
     public void LoadScene()
     {
+        StartCoroutine(LoadTime());
+        //SaveManager.num = this.num;
+        //SceneManager.LoadScene("Main");
+    }
+
+    public IEnumerator LoadTime()
+    {
         SaveManager.num = this.num;
-        SceneManager.LoadScene("Main");
+        var async = SceneManager.LoadSceneAsync("Main");
+
+        async.allowSceneActivation = false;
+        yield return new WaitForSeconds(2);
+        async.allowSceneActivation = true;
     }
 
     public void DeleteData()
