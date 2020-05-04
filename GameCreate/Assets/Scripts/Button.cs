@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
     SaveManager save = new SaveManager();
+    SceneController scene;
     PlayerController p;
     public int num;
+
+
 
     public void Push()
     {
@@ -22,20 +26,11 @@ public class Button : MonoBehaviour
 
     public void LoadScene()
     {
-        StartCoroutine(LoadTime());
-        //SaveManager.num = this.num;
-        //SceneManager.LoadScene("Main");
-    }
-
-    public IEnumerator LoadTime()
-    {
         SaveManager.num = this.num;
-        var async = SceneManager.LoadSceneAsync("Main");
-
-        async.allowSceneActivation = false;
-        yield return new WaitForSeconds(2);
-        async.allowSceneActivation = true;
+        StartCoroutine(scene.Load());
     }
+
+   
 
     public void DeleteData()
     {
@@ -45,6 +40,7 @@ public class Button : MonoBehaviour
     void Awake()
     {
         p = FindObjectOfType<PlayerController>();
+        scene = FindObjectOfType<SceneController>();
     }
 
     // Update is called once per frame
