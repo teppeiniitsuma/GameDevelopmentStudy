@@ -61,12 +61,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Button.cs" />
-    <Compile Include="Assets\Scripts\FileSave.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\SaveManager.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Controller\GameController.cs" />
+    <Compile Include="Assets\Scripts\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Controller\SceneController.cs" />
+    <Compile Include="Assets\Scripts\Data\Player.cs" />
+    <Compile Include="Assets\Scripts\Manager\FileSave.cs" />
+    <Compile Include="Assets\Scripts\Manager\SaveManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Message\CommonParam.cs" />
+    <Compile Include="Assets\Scripts\Message\MessageManager.cs" />
+    <Compile Include="Assets\Scripts\Message\MessageModel.cs" />
+    <Compile Include="Assets\Scripts\Message\MessagePresenter.cs" />
+    <Compile Include="Assets\Scripts\Message\MessageView.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/GameCreate/GameCreate/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
