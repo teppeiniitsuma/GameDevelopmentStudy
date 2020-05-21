@@ -19,15 +19,6 @@ public class SaveManager
         filePath   = Path.Combine(Application.dataPath, @"Resources\Save\SaveData\saveData");
     }
 
-    public void Save(int n)
-    {
-
-    }
-    public void Load()
-    {
-
-    }
-
     public void Delete()
     {
         Initialize();
@@ -81,7 +72,7 @@ public class SaveManager
             return;
         }
     }
-    public void savePlayerData(int n, Player p)
+    public void SavePlayerData(int n, Player p)
     {
         Initialize();
         StreamWriter writer;
@@ -93,7 +84,7 @@ public class SaveManager
         writer.Close();
     }
 
-    public Player loadPlayerData(int n)
+    public Player LoadPlayerData(int n)
     {
         Initialize();
         string data = "";

@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     }
     void Awake()
     {
-        if(save.loadPlayerData(SaveManager.num) != null)
-            player = save.loadPlayerData(SaveManager.num);
+        if(save.LoadPlayerData(SaveManager.num) != null)
+            player = save.LoadPlayerData(SaveManager.num);
         Debug.Log(player.pos);
     }
 

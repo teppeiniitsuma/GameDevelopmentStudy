@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
     <Compile Include="Assets\Scripts\Controller\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controller\SceneController.cs" />
+    <Compile Include="Assets\Scripts\Data\MessageData.cs" />
     <Compile Include="Assets\Scripts\Data\Player.cs" />
     <Compile Include="Assets\Scripts\Manager\FileSave.cs" />
     <Compile Include="Assets\Scripts\Manager\SaveManager.cs" />

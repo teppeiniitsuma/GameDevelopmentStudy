@@ -20,7 +20,7 @@ public class Button : MonoBehaviour
     public void DataSave()
     {
         Player player = p.GetPlayer;
-        save.savePlayerData(SaveManager.num, player);
+        save.SavePlayerData(SaveManager.num, player);
         Debug.Log(save);
     }
 

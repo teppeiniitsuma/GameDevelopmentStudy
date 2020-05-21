@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(MessageView))]
 public class MessagePresenter : MonoBehaviour
 {
-    [SerializeField] private float _messageSpeed = 0.5f;
+    [SerializeField] private float _messageSpeed = 0.2f;
     public float MessageSpeed { set { _messageSpeed = value; } }
     private MessageView _textView;
     private CommonParam.TextType _textType = CommonParam.TextType.MainText;
