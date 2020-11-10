@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class SaveManager
 {
-    private string folderPath;
-    private string filePath;
+    private string folderName;
+    private string fileName;
+    private readonly string folderPath = @"Resources\Save\SaveData";
+    private readonly string filePath   = @"Resources\Save\SaveData\saveData";
     public static int num = 1;
 
     /// <summary>
@@ -15,29 +17,29 @@ public class SaveManager
     /// </summary>
     void Initialize()
     {
-        folderPath = Path.Combine(Application.dataPath, @"Resources\Save\SaveData");
-        filePath   = Path.Combine(Application.dataPath, @"Resources\Save\SaveData\saveData");
+        folderName = Path.Combine(Application.dataPath, folderPath);
+        fileName   = Path.Combine(Application.dataPath, filePath);
     }
 
     public void Delete()
     {
         Initialize();
-        if (Directory.Exists(folderPath) == true)
+        if (Directory.Exists(folderName) == true)
         {
             //　UnityEditor上だと子要素だけ削除
             try
             {
-                Directory.Delete(folderPath, recursive: true);
+                Directory.Delete(folderName, recursive: true);
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
             }
-            Debug.Log(folderPath + "を削除しました。");
+            Debug.Log(folderName + "を削除しました。");
         }
         else
         {
-            Debug.Log(folderPath + "は存在しません。");
+            Debug.Log(folderName + "は存在しません。");
         }
     }
     /// <summary>
@@ -48,13 +50,13 @@ public class SaveManager
         Initialize();
         FileStream fs = null;
 
-        if(Directory.Exists(folderPath) == false)
+        if(Directory.Exists(folderName) == false)
         {
             try
             {
-                Directory.CreateDirectory(folderPath);
+                Directory.CreateDirectory(folderName);
                 //　Disposeしないとファイルの削除時に不具合が出る
-                using (fs = File.Create(folderPath))
+                using (fs = File.Create(folderName))
                 {
                 }
             }
@@ -63,7 +65,7 @@ public class SaveManager
                 Debug.Log(e.Message);
             }
 
-            Debug.Log(folderPath + "にフォルダを作成しました。");
+            Debug.Log(folderName + "にフォルダを作成しました。");
 
         }
         else
@@ -78,7 +80,7 @@ public class SaveManager
         StreamWriter writer;
 
         string json = JsonUtility.ToJson(p);
-        writer = new StreamWriter(filePath + n + ".json", false);
+        writer = new StreamWriter(fileName + n + ".json", false);
         writer.Write(json);
         writer.Flush();
         writer.Close();
@@ -90,9 +92,9 @@ public class SaveManager
         string data = "";
         StreamReader reader;
 
-        if (File.Exists(filePath + n + ".json") == true)
+        if (File.Exists(fileName + n + ".json") == true)
         {
-            reader = new StreamReader(filePath + n + ".json");
+            reader = new StreamReader(fileName + n + ".json");
             data = reader.ReadToEnd();
             reader.Close();
         }
