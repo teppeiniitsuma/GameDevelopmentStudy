@@ -28,12 +28,11 @@ public class PlayerController : MonoBehaviour
     }
     void Awake()
     {
-        if(save.LoadPlayerData(SaveManager.num) != null)
-            player = save.LoadPlayerData(SaveManager.num);
+        if (null != save.LoadPlayerData(SaveManager.num)) { player = save.LoadPlayerData(SaveManager.num); }
         Debug.Log(player.pos);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Moves();

@@ -13,9 +13,4 @@ public class GameController : MonoBehaviour
         save.CreateData();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
