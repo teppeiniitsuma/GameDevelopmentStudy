@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveManager
@@ -20,7 +18,9 @@ public class SaveManager
         folderName = Path.Combine(Application.dataPath, folderPath);
         fileName   = Path.Combine(Application.dataPath, filePath);
     }
-
+    /// <summary>
+    /// セーブデータの削除
+    /// </summary>
     public void Delete()
     {
         Initialize();
